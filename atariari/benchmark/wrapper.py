@@ -2,7 +2,7 @@ import gym
 from .ram_annotations import atari_dict
 
 
-class InfoWrapper(gym.Wrapper):
+class InfoWrapper(gym.Wrapper, gym.Env):
     def step(self, action):
         observation, reward, done, info = self.env.step(action)
         return observation, reward, done, self.info(info)
