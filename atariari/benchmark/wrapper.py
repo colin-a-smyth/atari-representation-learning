@@ -8,7 +8,9 @@ class InfoWrapper(gym.Wrapper, gym.Env):
         return observation, reward, terminated, truncated, self.info(info)
 
     def reset(self, **kwargs):
-        return self.env.reset(**kwargs)
+        obs, info = self.env.reset(**kwargs)
+        info = self.info(info)
+        return obs, info
 
     def info(self, info):
         raise NotImplementedError
