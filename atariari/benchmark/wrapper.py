@@ -5,7 +5,7 @@ from .ram_annotations import atari_dict
 class InfoWrapper(gym.Wrapper, gym.Env):
     def step(self, action):
         observation, reward, terminated, truncated, info = self.env.step(action)
-        done = terminated and truncated
+        done = terminated or truncated
         return observation, reward, done, self.info(info)
 
     def reset(self, **kwargs):
